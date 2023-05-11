@@ -6,9 +6,9 @@ from rest_framework import status
 
 
 """ 
-Test for user api
+Tests for user api
 """
-CREATE_USER_URL = reverse('user:create') #the url that handles the creating od users
+CREATE_USER_URL = reverse('users:create') #the url that handles the creating of users
 
 #a helper function to create the users with passed-in parameters
 def create_user(**params):
@@ -17,10 +17,10 @@ def create_user(**params):
 class PublicUserAPITests(TestCase):
     """Tests The Public features of the User API(e.g user registration)"""
     def setUp(self):
-        self.client = APIClient
+        self.client = APIClient()
 
     #sends the payload to the url then asserts the response
-    def create_user_success(self):
+    def test_create_user_success(self):
         payload ={
 
             'email':'test@example.com',
